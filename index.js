@@ -1,16 +1,18 @@
 var buttons = document.querySelectorAll(".drum").length
 for(var i=0;i<buttons;i++){
-    document.querySelectorAll("button")[i].addEventListener("click",function (){
+    document.querySelectorAll("button")[i].addEventListener("click",
+    function (){
         var drum = this.innerHTML;
-        return sounds(drum);
+        sounds(drum);
+        animations(drum);
     });
 }
 
 document.addEventListener("keypress",
 function (){
-    return sounds(event.key);
-}
-);
+    sounds(event.key);
+    animations(event.key);
+});
 
 function sounds(drum){
     switch(drum){
@@ -29,6 +31,14 @@ function sounds(drum){
         case "l":var audio = new Audio("sounds/snare.mp3");
                 break;
     }
-
     audio.play();
+}
+
+
+function animations(key){
+    var active = document.querySelector("."+key);
+    active.classList.add("pressed");
+    setTimeout(function(){
+        active.classList.remove("pressed");
+    }, 100);
 }

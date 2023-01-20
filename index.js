@@ -8,8 +8,8 @@ for(var i=0;i<buttons;i++){
     });
 }
 
-document.addEventListener("keypress",
-function (){
+document.addEventListener("keydown",
+function (event){
     sounds(event.key);
     animations(event.key);
 });
